@@ -21,13 +21,13 @@ public class Client implements Callable<Long> {
 
 	}
 
-	private Reusable _getReusable() throws NoMoreObjectAvailableException {
+	private Reusable _getReusable() throws Exception {
 		Reusable ret;
 		try {
 			ret=ReusablePool.getInstance().getReusable();
 			nbTries = 0;
 			return ret;
-		} catch(NoMoreObjectAvailableException e) {
+		} catch(NoMoreObjectAvailableException | InterruptedException e) {
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e2) {}
