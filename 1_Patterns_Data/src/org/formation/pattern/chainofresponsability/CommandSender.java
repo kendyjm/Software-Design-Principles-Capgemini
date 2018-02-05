@@ -17,5 +17,6 @@ public class CommandSender {
 
 	public void sendCommand(String commande) {
 		// I'd like to send my commande to all the handlers in the chain without knowing them
+		getChain().getFirst().process(getChain(), commande);
 	}
 }

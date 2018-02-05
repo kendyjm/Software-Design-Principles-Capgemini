@@ -10,6 +10,8 @@ public class CommandChain {
 	
 	public CommandChain() {
 		chain.add(new ConcreteCommandHandler1());
+		chain.add(new ConcreteCommandHandler1());
+		chain.add(new ConcreteCommandHandler2());
 		chain.add(new ConcreteCommandHandler2());
 		chain.add(new ConcreteCommandHandler1());
 	}
