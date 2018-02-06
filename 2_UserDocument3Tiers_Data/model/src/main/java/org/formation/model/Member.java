@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -26,6 +27,9 @@ public class Member {
 	@Id @GeneratedValue
 	private long id;
 	
+	/*
+	 * Utilisé par JPA et JSF!!
+	 */
 	@NotNull
 	private String email,password;
 	
@@ -36,7 +40,7 @@ public class Member {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date registeredDate;
 	
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true, fetch=FetchType.LAZY)
 	private Set<Document> documents = new HashSet<Document>();
 
 	public long getId() {
@@ -47,6 +51,9 @@ public class Member {
 		this.id = id;
 	}
 
+	/*
+	 * Utilisé par JPA uniquement!
+	 */
 	@Column(unique=true)
 	public String getEmail() {
 		return email;

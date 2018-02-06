@@ -2,7 +2,6 @@ package org.formation.controler;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -15,6 +14,7 @@ import org.formation.service.UserDocumentServiceLocal;
 public class LoginController {
 
 	// Please inject the service as EJB 
+	@EJB
 	UserDocumentServiceLocal userDocumentService;
 	
 	private String email,password;
@@ -26,7 +26,18 @@ public class LoginController {
 		// Use service yto authenticate users
 		// If authentication succed, go to documents
 		// else remain on login
-		return "";
+		Member tryMember = new Member();
+		tryMember.setEmail(email);
+		tryMember.setPassword(password);
+		try {
+			userDocumentService.authenticate(tryMember);
+			FacesContext.getCurrentInstance().getExternalContext().getSession(true); // TODO est-ce correct ??
+		} catch (AuthenticationException e) {
+			System.err.println("BADDDDDDDDDDDDD USER PASSWORD!!!");
+			// FacesContext.getCurrentInstance().getExternalContext().getSession(true); // TODO y mettre un message d'erreur ??
+			return "login";
+		}
+		return "documents";
 	}
 
 	public String getEmail() {

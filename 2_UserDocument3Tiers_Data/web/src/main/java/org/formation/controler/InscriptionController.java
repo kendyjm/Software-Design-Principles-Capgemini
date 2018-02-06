@@ -21,7 +21,7 @@ public class InscriptionController {
 	
 	
 	public InscriptionController() {
-		// TODO Auto-generated constructor stub
+		System.err.println("AAAAAAAAAAAAAAAAA");
 	}
 
 	public String register() {

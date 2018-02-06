@@ -31,7 +31,7 @@
 			<h:outputText rendered="#{empty documentsController.documents}"
 				value="Encore aucun documents" />
 			<!-- Please complete -->
-			<h:dataTable value="" var="_doc"
+			<h:dataTable value="#{documentsController.documents}" var="_doc"
 				id="docTable">
 				<h:column>
 					<f:facet name="header">Nom</f:facet>#{_doc.name}</h:column>

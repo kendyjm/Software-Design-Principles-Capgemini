@@ -32,7 +32,19 @@ public class UserDocumentService implements UserDocumentServiceRemote, UserDocum
 
 	public Member authenticate(Member user) throws AuthenticationException {
 		// Authenticate users or throw exception, if user does not exist
-		return null;
+		Query q = em.createQuery("from Member m where m.email = :email and password = :password");
+		q.setParameter("email", user.getEmail());
+		q.setParameter("password", user.getPassword());
+		Member fullMember = null;
+		try {
+			fullMember = (Member) q.getSingleResult();
+			throw new AuthenticationException();
+		} catch (PersistenceException e) {
+			// All rigth no one exist with this email
+			System.err.println(e.getMessage());
+		}
+		
+		return fullMember;
 	}
 	
 	public Member registerUser(Member newMember) throws AlreadyExistException {
