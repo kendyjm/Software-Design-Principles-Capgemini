@@ -74,6 +74,7 @@ public class UserDocumentService implements UserDocumentServiceRemote, UserDocum
 			throw new AlreadyExistException();
 		} catch (PersistenceException e) {
 			// All rigth no one exist with this email
+			logger.warn("AlreadyExist member {}", newMember);
 		}
 		newMember.setRegisteredDate(new Date());
 		try {

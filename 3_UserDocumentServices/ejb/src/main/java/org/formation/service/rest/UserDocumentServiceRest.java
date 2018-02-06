@@ -14,12 +14,18 @@ import org.formation.service.UserDocumentServiceLocal;
 
 import io.swagger.annotations.Api;
 
-
+/*
+ * Accessible ici http://localhost:8080/userDocument-ejb-endpoint/rest/docs
+ */
+@Path("/userDocs")
+@Api(value = "/userDocs", description="User document service")
 public class UserDocumentServiceRest {
 
 	@EJB
 	UserDocumentServiceLocal userDocumentService;
 	
+	@POST
+	@Produces("APPLICATION/JSON")
     public Response registerMember(Member member) {
 		
 		Response.ResponseBuilder builder = null;
@@ -36,7 +42,7 @@ public class UserDocumentServiceRest {
         return builder.build();
 	}
 	
-
+    @GET
 	public String getHome() {
 		return "<html><body><h1>Hello you really Hit me</h1></body></html>";
 	}
