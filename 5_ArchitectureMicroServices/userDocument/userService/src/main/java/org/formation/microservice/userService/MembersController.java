@@ -2,16 +2,19 @@ package org.formation.microservice.userService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.http.MediaType;
 
 
 
@@ -23,8 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MembersController {
 
-	protected Logger logger = Logger.getLogger(MembersController.class
-			.getName());
+	protected Logger logger = LoggerFactory.getLogger(MembersController.class);
 	protected MemberRepository memberRepository;
 
 	/**
@@ -76,17 +78,30 @@ public class MembersController {
 	 */
 	@RequestMapping("/Members/owner/{name}")
 	public List<Member> byOwner(@PathVariable("name") String partialName) {
-
-		// A completer
-		return new ArrayList<Member>();
-		
+		logger.info("Members-service byOwner() invoked:  {}" , partialName);
+		List<Member> members = memberRepository.findByNomContainingIgnoreCase(partialName);
+		logger.info("Members-service byOwner() invoked with [{}] found {} members" , partialName, members.size());
+		return members;
 	}
 
 
-	@RequestMapping(path = "/authenticate", method = RequestMethod.POST)
+	@RequestMapping(path = "/authenticate", method = RequestMethod.POST, consumes = "application/json")
 	public Member authenticate(@Valid @RequestBody User user) {
-
-		// A COMPLETER
+		logger.info("Members-service authenticate() invoked with email:{}" , user.getEmail());
+		Member member = memberRepository.findFirstByEmailAndPassword(user.getEmail(), user.getPassword());
+		logger.info("Members-service authenticate() invoked with email:{} has found member {}" , member);
+		return member;
+	}
+	
+	@RequestMapping(path = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Member register(@Valid @RequestBody Member pMember) {
+		logger.info("Members-service register() invoked with email:{}" , pMember.getEmail());
+		
+		Member member = memberRepository.findFirstByEmailAndPassword(pMember.getEmail(), pMember.getPassword());
+		if(member == null) {
+			return memberRepository.save(pMember);
+		}
+		
 		return null;
 	}
 }

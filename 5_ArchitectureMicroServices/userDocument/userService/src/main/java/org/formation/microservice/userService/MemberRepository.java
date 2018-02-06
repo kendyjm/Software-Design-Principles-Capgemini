@@ -29,7 +29,10 @@ public interface MemberRepository extends Repository<Member, Long> {
 	 */
 	public List<Member> findByNomContainingIgnoreCase(String partialNom);
 	
-	
+	/**
+	 * Save , use it to register a new user
+	 */
+	public Member save(Member user);
 	
 	/**
 	 * Find Members with email and password
@@ -37,9 +40,7 @@ public interface MemberRepository extends Repository<Member, Long> {
 	 * @param lastname
 	 * @return
 	 */
-	//
-	// A COMPLETER
-	//
+	public Member findFirstByEmailAndPassword(String email, String password);
 	
 	/**
 	 * Fetch the number of Members known to the system.
