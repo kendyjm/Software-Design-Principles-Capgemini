@@ -1,0 +1,19 @@
+ELASTICSEARCH 
+http://localhost:9200/
+http://localhost:9200/_cluster/health?pretty=true
+
+// api de recherche
+http://localhost:9200/jboss*/_search?pretty  (196 hits total)
+
+http://localhost:9200/_cat/indices
+yellow open .kibana          GL8ehbXJS-Gg2VRGWwa91w 1 1   2 1  13.5kb  13.5kb
+yellow open jboss-2018-02-06 A3KY0BZIRjmo0GfjRzUzqA 5 1 123 0 624.6kb 624.6kb
+yellow open jboss-2018-02-05 aYy1MOdsTxCwcHWr9E-fwg 5 1  73 0 438.8kb 438.8kb
+
+
+KIBANA est le point d'entrée pour les recherches dans l'index
+http://localhost:5601
+
+
+LOGSTASH
+C:\workspace\@formations\2017-SoftwareEngineeringDesignPrinciples\sources\4_elasticsearch\logstash-5.4.1\bin>logstash -r -f ../logstash_pipeline.conf
