@@ -1,0 +1,27 @@
+version: '2'
+services:
+  annuaire:
+    build: ./annuaire/
+    networks:
+     - back
+     - front
+    ports:
+     - "1111:1111"
+  documentservice:
+    build: ./documentService/
+    networks:
+     - back
+  userservice:
+    build: ./userService/
+    networks:
+      - back
+  proxy:
+    build: ./proxy/
+    networks:
+      - front
+    ports:
+      - 8080:8080
+
+networks:
+  back:
+  front:

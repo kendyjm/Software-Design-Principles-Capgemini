@@ -1,0 +1,8 @@
+<h1>Documents</h1>
+
+<ul class="documents">
+ <li *ngFor="let document of documents" class="thumbnail">
+          <a href="">{{document.name}}</a> ({{document.contentType}}) <span ng-bind="document.uploadedDate | date:'dd/MM/yyyy'"></span>
+        </li>
+      </ul>
+      
