@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.formation.microservice.userService.notification.Email;
+import org.formation.microservice.userService.notification.NotificationClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,7 @@ public class MembersController {
 
 	protected Logger logger = LoggerFactory.getLogger(MembersController.class);
 	protected MemberRepository memberRepository;
+	private NotificationClient notificationClient;
 
 	/**
 	 * Create an instance plugging in the respository of Members.
@@ -36,8 +39,9 @@ public class MembersController {
 	 *            An Member repository implementation.
 	 */
 	@Autowired
-	public MembersController(MemberRepository MemberRepository) {
+	public MembersController(MemberRepository MemberRepository, NotificationClient notificationClient) {
 		this.memberRepository = MemberRepository;
+		this.notificationClient = notificationClient;
 
 		logger.info("MemberRepository says system has "
 				+ MemberRepository.countMembers() + " Members");
@@ -99,6 +103,11 @@ public class MembersController {
 		
 		Member member = memberRepository.findFirstByEmailAndPassword(pMember.getEmail(), pMember.getPassword());
 		if(member == null) {
+			Email mail = new Email();
+			mail.setEmail(pMember.getEmail());
+			mail.setContent("Welcome on board!");
+			notificationClient.sendSimple(mail);
+			
 			return memberRepository.save(pMember);
 		}
 		

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Import;
 
 
@@ -19,6 +20,7 @@ import org.springframework.context.annotation.Import;
  */
 @EnableAutoConfiguration
 @EnableEurekaClient
+@EnableFeignClients
 @Import(MembersConfiguration.class)
 public class MembersServer {
 
