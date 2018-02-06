@@ -17,6 +17,9 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 
 
 @Entity
@@ -135,4 +138,8 @@ public class Member {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return  ReflectionToStringBuilder.toString(this);
+	}
 }

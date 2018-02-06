@@ -99,11 +99,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-  <groupId>io.swagger</groupId>
-  <artifactId>swagger-jaxrs</artifactId>
-  <version>1.5.0</version>
-</dependency>
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-jaxrs</artifactId>
+				<version>1.5.0</version>
+			</dependency>
         </dependencies>
     </dependencyManagement>
 
