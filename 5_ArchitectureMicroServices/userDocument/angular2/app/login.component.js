@@ -8,11 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var membre_1 = require('./membre');
-var proxy_service_1 = require('./proxy.service');
-var router_1 = require('@angular/router');
-var LoginComponent = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var membre_1 = require("./membre");
+var proxy_service_1 = require("./proxy.service");
+var router_1 = require("@angular/router");
+var LoginComponent = /** @class */ (function () {
     function LoginComponent(router, proxyService) {
         this.router = router;
         this.proxyService = proxyService;
@@ -20,10 +21,6 @@ var LoginComponent = (function () {
         this.message = "";
     }
     LoginComponent.prototype.onEnter = function () {
-        var _this = this;
-        this.proxyService.authenticate(this.membre, function () {
-            this.message = "Try again";
-        }).then(function (membre) { return _this.showDocuments(membre); });
     };
     LoginComponent.prototype.showDocuments = function (membre) {
         this.membre = membre;
@@ -33,8 +30,9 @@ var LoginComponent = (function () {
         core_1.Component({
             selector: 'my-login',
             templateUrl: 'app/login.component.html'
-        }), 
-        __metadata('design:paramtypes', [router_1.Router, proxy_service_1.ProxyService])
+        }),
+        __metadata("design:paramtypes", [router_1.Router,
+            proxy_service_1.ProxyService])
     ], LoginComponent);
     return LoginComponent;
 }());

@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var proxy_service_1 = require('./proxy.service');
-var AppComponent = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var proxy_service_1 = require("./proxy.service");
+var AppComponent = /** @class */ (function () {
     function AppComponent(proxyService) {
         this.proxyService = proxyService;
         this.title = 'Your drive !';
@@ -21,8 +22,8 @@ var AppComponent = (function () {
             selector: 'my-app',
             templateUrl: 'app/app.component.html',
             providers: [proxy_service_1.ProxyService]
-        }), 
-        __metadata('design:paramtypes', [proxy_service_1.ProxyService])
+        }),
+        __metadata("design:paramtypes", [proxy_service_1.ProxyService])
     ], AppComponent);
     return AppComponent;
 }());

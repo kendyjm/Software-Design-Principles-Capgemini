@@ -8,22 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
-var ProxyService = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/toPromise");
+var ProxyService = /** @class */ (function () {
     function ProxyService(http) {
         this.http = http;
         this.proxyServer = 'http://localhost:8081';
         this.authenticateUrl = '/members-service/authenticate';
         this.documentsUrl = '/documents-service/Documents/owner/';
+        console.log('toto');
     }
     ProxyService.prototype.authenticate = function (membre, handleError) {
         var _this = this;
         return this.http.post(this.proxyServer + this.authenticateUrl, membre).toPromise().then(function (response) { return _this.initMembre(response); }).catch(handleError);
     };
     ProxyService.prototype.getDocuments = function () {
-        // A compléter
+        var _this = this;
+        return this.http.get(this.proxyServer + this.documentsUrl + this.membre.email + '/').toPromise().then(function (response) { return _this.initDocuments(response); });
     };
     ProxyService.prototype.initMembre = function (response) {
         this.membre = response.json();
@@ -34,8 +37,8 @@ var ProxyService = (function () {
         return documents;
     };
     ProxyService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
     ], ProxyService);
     return ProxyService;
 }());

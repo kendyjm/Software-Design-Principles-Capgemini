@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var proxy_service_1 = require('./proxy.service');
-var DocumentsComponent = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var proxy_service_1 = require("./proxy.service");
+var DocumentsComponent = /** @class */ (function () {
     function DocumentsComponent(proxyService) {
         this.proxyService = proxyService;
     }
@@ -24,8 +25,8 @@ var DocumentsComponent = (function () {
         core_1.Component({
             selector: 'my-documents',
             templateUrl: 'app/documents.component.html'
-        }), 
-        __metadata('design:paramtypes', [proxy_service_1.ProxyService])
+        }),
+        __metadata("design:paramtypes", [proxy_service_1.ProxyService])
     ], DocumentsComponent);
     return DocumentsComponent;
 }());
