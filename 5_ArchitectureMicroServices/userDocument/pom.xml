@@ -12,6 +12,6 @@
   	<module>userService</module>
   	<module>documentService</module>
   	<module>proxy</module>
-  	<module>notifcation-service</module>
+  	<module>notification-service</module>
   </modules>
 </project>
