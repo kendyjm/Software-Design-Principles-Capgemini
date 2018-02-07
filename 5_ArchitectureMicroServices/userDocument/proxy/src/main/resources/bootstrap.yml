@@ -38,6 +38,7 @@ ribbon:
   ReadTimeout: 20000
   ConnectTimeout: 20000
 
+# librarie donnant les propriétés de routage
 zuul:
   ignoredServices: '*'
   host:
@@ -47,7 +48,7 @@ zuul:
   routes:
     member-service:
         path: /members-service/**
-#        url: http://localhost:2222
+#        url: http://localhost:2222 ne surtout pas faire, préférer le serviceId connu de l'annuaire
         serviceId: members-service
         stripPrefix: true
         sensitiveHeaders:

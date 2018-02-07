@@ -69,6 +69,13 @@ public class MembersController {
 			return member;
 		}
 	}
+	
+	@RequestMapping("/displayAll")
+	public List<Member> displayAll() {
+		logger.info("Members-service displayAll() invoked");
+		List<Member> members = memberRepository.findAll();
+		return members;
+	}
 
 	/**
 	 * Fetch Members with the specified name. A partial case-insensitive match

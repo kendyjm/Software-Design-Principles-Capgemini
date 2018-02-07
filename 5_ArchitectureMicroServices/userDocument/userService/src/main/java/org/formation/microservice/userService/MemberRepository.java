@@ -49,4 +49,6 @@ public interface MemberRepository extends Repository<Member, Long> {
 	 */
 	@Query("SELECT count(*) from Member")
 	public int countMembers();
+
+	public List<Member> findAll();
 }

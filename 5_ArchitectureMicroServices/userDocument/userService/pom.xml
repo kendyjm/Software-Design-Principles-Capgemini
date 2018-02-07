@@ -64,11 +64,23 @@
 			<artifactId>hsqldb</artifactId>
 		</dependency>
 
+		<!-- Spring Cloud starter -->
 		<dependency>
-			<!-- Spring Cloud starter -->
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter</artifactId>
 		</dependency>
+		
+		<dependency>
+			<!-- utile pour les @FeignClient et @EnableFeignClients pour déclarer des interfaces qui appellent des interface qui appellent des services REST -->
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency>	
+		
+		<dependency>
+			<!-- utile pour les fallback, il teste aussi les temps de réponse, et il apprend sur le tas avec le temps (historique des temps de réponse) -->	
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hystrix</artifactId>
+		</dependency>	
 
 		<!-- <dependency> -->
 		<!-- Eureka service registration -->
